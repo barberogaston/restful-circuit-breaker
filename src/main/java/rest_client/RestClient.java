@@ -14,7 +14,7 @@ import java.util.HashMap;
  * then the resource URL would be: api.example.com/items and the path: /1
  *
  * @param <T> Type of data you want to send and receive in the implementation.
- *           For example, you can decide to recieve a JSON as String and send
+ *           For example, you can decide to receive a JSON as String and send
  *           bodies as a JSON String, or parse the received JSON Strings and
  *           return a POJO (and also send it).
  */
@@ -68,6 +68,14 @@ public abstract class RestClient<T>
         return url.substring(0, url.length() - 1);
     }
 
+    /**
+     * Builds an HttpUrlConnection and sets the header to send and receive JSON
+     * objects
+     * 
+     * @param connectionURL
+     * @return
+     * @throws IOException
+     */
     HttpURLConnection makeConnection(String connectionURL) throws IOException
     {
         URL url = new URL(buildUrl(connectionURL));
